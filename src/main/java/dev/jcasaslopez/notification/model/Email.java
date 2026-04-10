@@ -1,24 +1,25 @@
 package dev.jcasaslopez.notification.model;
 
-public class Notification {
-	private String email;
+public class Email {
+	private String emailAddress;
 	private String subject;
 	private String emailBody;
-	public Notification(String email, String subject, String emailBody) {
-		this.email = email;
+	
+	public Email(String emailAddress, String subject, String emailBody) {
+		this.emailAddress = emailAddress;
 		this.subject = subject;
 		this.emailBody = emailBody;
 	}
 
-	public Notification() {
+	public Email() {
 	}
 
-	public String getEmail() {
-		return email;
+	public String getEmailAddress() {
+		return emailAddress;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
 	}
 
 	public String getSubject() {
@@ -36,5 +37,5 @@ public class Notification {
 	public void setEmailBody(String emailBody) {
 		this.emailBody = emailBody;
 	}
-
+	
 }
