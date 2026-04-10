@@ -1,9 +1,9 @@
 package dev.jcasaslopez.notification.service;
 
-import dev.jcasaslopez.notification.model.Notification;
+import dev.jcasaslopez.notification.model.Email;
 
 public interface NotificationService {
 	
-	void sendEmail(Notification notification);
+	void sendEmail(Email notification);
 
 }

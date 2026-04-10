@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
-import dev.jcasaslopez.notification.model.Notification;
+import dev.jcasaslopez.notification.model.Email;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 
@@ -21,9 +21,9 @@ public class NotificationServiceImpl implements NotificationService {
 
 	// Message format is HTTP.
 	@Override
-	public void sendEmail(Notification notification) {
+	public void sendEmail(Email notification) {
 
-		String emailAddress = notification.getEmail();
+		String emailAddress = notification.getEmailAddress();
 		String emailSubject = notification.getSubject();
 		String emailBody = notification.getEmailBody();
 
