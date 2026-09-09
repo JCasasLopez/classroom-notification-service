@@ -25,9 +25,9 @@ public class NotificationServiceImpl implements NotificationService {
 	@Override
 	public void sendEmail(Email notification) {
 
-		String emailAddress = notification.getEmailAddress();
-		String emailSubject = notification.getSubject();
-		String emailBody = notification.getEmailBody();
+		String emailAddress = notification.emailAddress();
+		String emailSubject = notification.subject();
+		String emailBody = notification.emailBody();
 
 		try {
 			MimeMessage mimeMessage = mailSender.createMimeMessage();
