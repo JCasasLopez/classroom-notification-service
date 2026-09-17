@@ -60,19 +60,7 @@ public class NotificationServiceImpl implements NotificationService {
 
 	}
 	
-	@Scheduled(fixedDelay = 60000)
-	public void retryFailedNotifications() throws InterruptedException {
-	    List<FailedNotification> pending = repository.findAll();
-
-	    for (FailedNotification failed : pending) {
-	        Email email = mapper.toEmail(failed);
-
-	        if (trySendWithRetries(email)) {
-	            repository.delete(failed); 
-	        }
-	    }
-	}
-	
+	@Override
 	public boolean trySendWithRetries(Email email) throws InterruptedException {
         int retries = 0;
         while (retries < MAX_ATTEMPTS) {
@@ -86,5 +74,18 @@ public class NotificationServiceImpl implements NotificationService {
         }
         return false;
     }
+	
+	@Scheduled(fixedDelay = 60000)
+	public void retryFailedNotifications() throws InterruptedException {
+	    List<FailedNotification> pending = repository.findAll();
 
+	    for (FailedNotification failed : pending) {
+	        Email email = mapper.toEmail(failed);
+
+	        if (trySendWithRetries(email)) {
+	            repository.delete(failed); 
+	        }
+	    }
+	}
+	
 }
