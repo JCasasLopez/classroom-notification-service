@@ -4,7 +4,9 @@ import org.springframework.kafka.annotation.KafkaHandler;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
+import dev.jcasaslopez.classroom.shared.event.NotificationEvent;
 import dev.jcasaslopez.notification.dto.Email;
+import dev.jcasaslopez.notification.mapper.NotificationEventMapper;
 import dev.jcasaslopez.notification.mapper.NotificationMapper;
 import dev.jcasaslopez.notification.repository.FailedNotificationRepository;
 import dev.jcasaslopez.notification.service.NotificationService;
@@ -15,19 +17,22 @@ public class NotificationListener {
 	
 	private final NotificationService notificationService;
 	private final FailedNotificationRepository repository;
-	private final NotificationMapper mapper;
+	private final NotificationMapper notificationMapper;
+	private final NotificationEventMapper notificationEventMapper;
 
 	public NotificationListener(NotificationService notificationService, FailedNotificationRepository repository,
-			NotificationMapper mapper) {
+			NotificationMapper notificationMapper, NotificationEventMapper notificationEventMapper) {
 		this.notificationService = notificationService;
 		this.repository = repository;
-		this.mapper = mapper;
+		this.notificationMapper = notificationMapper;
+		this.notificationEventMapper = notificationEventMapper;
 	}
 
 	@KafkaHandler
-	public void handler(Email email) throws InterruptedException {
+	public void handler(NotificationEvent notificationEvent) throws InterruptedException {
+		Email email = notificationEventMapper.toEmail(notificationEvent);
 	    if (!notificationService.trySendWithRetries(email)) {
-	        repository.save(mapper.toEntity(email));
+	        repository.save(notificationMapper.toEntity(email));
 	    }
 	}
 }
