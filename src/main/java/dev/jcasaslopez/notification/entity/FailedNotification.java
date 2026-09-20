@@ -13,15 +13,15 @@ public class FailedNotification {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long idNotification;
-	private String emailAddress;
 	private String subject;
 	private String emailBody;
-	
-	public FailedNotification(long idNotification, String emailAddress, String subject, String emailBody) {
+	private String emailAddress;
+
+	public FailedNotification(long idNotification, String subject, String emailBody, String emailAddress) {
 		this.idNotification = idNotification;
-		this.emailAddress = emailAddress;
 		this.subject = subject;
 		this.emailBody = emailBody;
+		this.emailAddress = emailAddress;
 	}
 
 	public FailedNotification() {
@@ -29,10 +29,6 @@ public class FailedNotification {
 
 	public long getIdNotification() {
 		return idNotification;
-	}
-
-	public String getEmailAddress() {
-		return emailAddress;
 	}
 
 	public String getSubject() {
@@ -43,12 +39,12 @@ public class FailedNotification {
 		return emailBody;
 	}
 
-	public void setIdNotification(long idNotification) {
-		this.idNotification = idNotification;
+	public String getEmailAddress() {
+		return emailAddress;
 	}
 
-	public void setEmailAddress(String emailAddress) {
-		this.emailAddress = emailAddress;
+	public void setIdNotification(long idNotification) {
+		this.idNotification = idNotification;
 	}
 
 	public void setSubject(String subject) {
@@ -58,5 +54,9 @@ public class FailedNotification {
 	public void setEmailBody(String emailBody) {
 		this.emailBody = emailBody;
 	}
-	
+
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
+	}
+
 }

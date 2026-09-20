@@ -11,17 +11,17 @@ public class NotificationMapper {
     public FailedNotification toEntity(Email email) {
         return new FailedNotification(
                 0L, 
-                email.emailAddress(),
                 email.subject(),
-                email.emailBody()
+                email.emailBody(),
+                email.emailAddress()
         );
     }
 
     public Email toEmail(FailedNotification entity) {
         return new Email(
-                entity.getEmailAddress(),
-                entity.getSubject(),
-                entity.getEmailBody()
+                entity.getSubject(),      
+                entity.getEmailBody(),
+                entity.getEmailAddress()
         );
     }
 }

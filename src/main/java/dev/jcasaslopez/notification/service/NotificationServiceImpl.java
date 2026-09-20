@@ -63,7 +63,7 @@ public class NotificationServiceImpl implements NotificationService {
 			logger.info("Email successfully sent to: {}", emailAddress);
 
 		} catch (RuntimeException | MessagingException ex) {
-			logger.error("Failed to send email to {}: {}", emailAddress, ex.getMessage(), ex);
+			logger.error("Failed to send email to {}", emailAddress, ex);
 			throw new EmailSendException("Fail to send email");
 		}
 
