@@ -15,7 +15,6 @@ import org.testcontainers.containers.KafkaContainer;
 import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.utility.DockerImageName;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.icegreen.greenmail.configuration.GreenMailConfiguration;
 import com.icegreen.greenmail.junit5.GreenMailExtension;
 import com.icegreen.greenmail.util.ServerSetupTest;
@@ -26,7 +25,6 @@ import dev.jcasaslopez.notification.repository.FailedNotificationRepository;
 @ActiveProfiles("test")
 public class BaseIntegrationTest {
 	
-	@Autowired protected ObjectMapper objectMapper;
     @Autowired protected FailedNotificationRepository repository;
     @Autowired protected JavaMailSenderImpl mailSender;
     @Autowired protected KafkaListenerEndpointRegistry registry; 
