@@ -31,10 +31,10 @@ public class KafkaTopicConfig {
 				.config(TopicConfig.RETENTION_MS_CONFIG, String.valueOf(24 * 60 * 60 * 1000L)) 
 				
 				// Caps topic disk usage at 100 MB to prevent unexpected disk saturation
-				.config(TopicConfig.RETENTION_BYTES_CONFIG, String.valueOf(100 * 1024 * 1024L))
+				.config(TopicConfig.RETENTION_BYTES_CONFIG, String.valueOf(10 * 1024 * 1024L))
 				
 				// Relatively small 10 MB segments force timely log rolls so retention policies actually trigger on low volume
-				.config(TopicConfig.SEGMENT_BYTES_CONFIG, String.valueOf(10 * 1024 * 1024L)) 
+				.config(TopicConfig.SEGMENT_BYTES_CONFIG, String.valueOf(1 * 1024 * 1024L)) 
 				.build();
 	}
 
