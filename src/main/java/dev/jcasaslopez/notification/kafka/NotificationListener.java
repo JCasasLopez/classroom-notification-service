@@ -1,4 +1,4 @@
-package dev.jcasaslopez.notification.listener;
+package dev.jcasaslopez.notification.kafka;
 
 import org.springframework.kafka.annotation.KafkaHandler;
 import org.springframework.kafka.annotation.KafkaListener;
